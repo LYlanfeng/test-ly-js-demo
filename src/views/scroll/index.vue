@@ -59,6 +59,7 @@
       :pull-up-disabled="pullUpDisabled"
       scroll-y
       pull-up-load
+      pull-up-finished-text="没有更多数据"
       @pulling-up="pullingUpHandler"
     >
       <ul class="pulldown-list">
@@ -70,8 +71,8 @@
   </div>
   <div>
     <span>pullUpLoading: {{ pullUpLoading }}</span>
-    <ly-e-button @click="handleOpenPullUp2">打开下拉刷新2</ly-e-button>
-    <ly-e-button @click="handleClosePullUp2">关闭下拉刷新2</ly-e-button>
+    <ly-e-button @click="handleOpenPullUp2">打开上拉加载2</ly-e-button>
+    <ly-e-button @click="handleClosePullUp2">关闭上拉加载2</ly-e-button>
   </div>
 
   <div class="border" style="height: 300px">
@@ -169,8 +170,8 @@
 <script lang="ts" setup>
 // import LyScroll from '../../components/scroll/src/index.vue'
 // import { ScrollInstance } from '@/components/scroll/src/types'
-import { Scroll as LyScroll } from '@ly-js/scroll'
-import '@ly-js/scroll/es/components/scroll/style/index'
+// import { Scroll as LyScroll } from '@ly-js/scroll'
+// import '@ly-js/scroll/es/components/scroll/style/index'
 import type { ScrollInstance } from '@ly-js/scroll'
 
 function generateData() {

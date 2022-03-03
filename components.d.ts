@@ -24,6 +24,7 @@ declare module 'vue' {
     LyETableLayout: typeof import('@ly-js/element/es')['TableLayout']
     LyEUpload: typeof import('@ly-js/element/es')['Upload']
     LyIcon: typeof import('@ly-js/ui/es')['Icon']
+    LyScroll: typeof import('@ly-js/scroll/es')['Scroll']
     LyVFixedContainer: typeof import('@ly-js/vant/es')['FixedContainer']
     LyVPage: typeof import('@ly-js/vant/es')['Page']
     ScrollBar: typeof import('./src/components/ScrollBar.vue')['default']

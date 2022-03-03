@@ -8,6 +8,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { LyUIResolver } from '@ly-js/ui/resolver'
 import { LyEUIResolver } from '@ly-js/element/resolver'
 import { LyVUIResolver } from '@ly-js/vant/resolver'
+import { LyScrollResolver } from '@ly-js/scroll/resolver'
 
 const TestResolver = () => {
   return [
@@ -56,7 +57,10 @@ export default defineConfig({
         TestResolver(),
         ElementPlusResolver(),
         LyUIResolver(),
-        LyEUIResolver(),
+        LyScrollResolver(),
+        LyEUIResolver({
+          importStyle: 'sass' // sass
+        }),
         LyVUIResolver()
       ]
     }),
