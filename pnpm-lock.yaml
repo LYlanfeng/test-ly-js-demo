@@ -13,7 +13,7 @@ specifiers:
   '@better-scroll/shared-utils': ^2.4.2
   '@better-scroll/slide': ^2.4.2
   '@element-plus/icons-vue': ^0.2.7
-  '@ly-js/element': ^0.0.18
+  '@ly-js/element': ^0.0.19
   '@ly-js/eslint-config': ^0.0.4
   '@ly-js/scroll': ^0.0.4
   '@ly-js/stylelint-config': ^0.0.3
@@ -59,7 +59,7 @@ dependencies:
   '@better-scroll/shared-utils': registry.npmmirror.com/@better-scroll/shared-utils/2.4.2
   '@better-scroll/slide': registry.npmmirror.com/@better-scroll/slide/2.4.2
   '@element-plus/icons-vue': registry.npmmirror.com/@element-plus/icons-vue/0.2.7_vue@3.2.31
-  '@ly-js/element': registry.npmmirror.com/@ly-js/element/0.0.18_f40a49df8b190c2cc91dc934cf13a9a4
+  '@ly-js/element': registry.npmmirror.com/@ly-js/element/0.0.19_f40a49df8b190c2cc91dc934cf13a9a4
   '@ly-js/scroll': registry.npmmirror.com/@ly-js/scroll/0.0.4_11b0e1af03745f9d30658faf1bfe5fc7
   '@ly-js/ui': registry.npmmirror.com/@ly-js/ui/0.0.21_8ccb5b5108483cb3e7564a1b5ab44b41
   '@ly-js/utils': registry.npmmirror.com/@ly-js/utils/0.0.6
@@ -717,11 +717,11 @@ packages:
       '@jridgewell/sourcemap-codec': registry.npmmirror.com/@jridgewell/sourcemap-codec/1.4.11
     dev: true
 
-  registry.npmmirror.com/@ly-js/element/0.0.18_f40a49df8b190c2cc91dc934cf13a9a4:
-    resolution: {integrity: sha512-M+zXrCj4AxXs61h3A05eIkJNYTMVlyIwde/bEbGxUzd45dCjGf73i5jUl6CwTv/v4c3Avd0nHzU1BtHFY1EC+w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@ly-js/element/-/element-0.0.18.tgz}
-    id: registry.npmmirror.com/@ly-js/element/0.0.18
+  registry.npmmirror.com/@ly-js/element/0.0.19_f40a49df8b190c2cc91dc934cf13a9a4:
+    resolution: {integrity: sha512-C6jwaoE39QZ55uEOg7vcq3uh8aG6YHAiJv4/kOdl39NMzaairtC91jEvPP1iezT80MheeQIeFTVxrDUVs731+Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@ly-js/element/-/element-0.0.19.tgz}
+    id: registry.npmmirror.com/@ly-js/element/0.0.19
     name: '@ly-js/element'
-    version: 0.0.18
+    version: 0.0.19
     peerDependencies:
       '@element-plus/icons-vue': '>=0.2.7'
       '@ly-js/ui': 0.0.21

@@ -10,5 +10,10 @@ module.exports = {
     $customRef: 'readonly',
     $toRef: 'readonly',
     defineOptions: 'readonly'
-  }
+  },
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true
+    }
+  },
 }

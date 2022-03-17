@@ -27,8 +27,8 @@
 </template>
 
 <script lang="ts" setup>
-import LyELayout from '../components/layout/src/index.vue'
-import '@ly-js/element/es/components/layout/style/index'
+// import LyELayout from '../components/layout/src/index.vue'
+// import '@ly-js/element/es/components/layout/style/index'
 // import '../components/layout/style.scss'
 // import 'element-plus/es/components/menu/style/index'
 // import 'element-plus/es/components/tabs/style/index'

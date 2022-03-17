@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useLayout } from '../../components/layout'
+import { useLayout } from '@ly-js/element'
 
 defineOptions({
   name: 'TestChild1'
