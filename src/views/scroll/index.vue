@@ -1,5 +1,5 @@
 <template>
-  <div>test scroll</div>
+  <div ref="testRef">test scroll</div>
   <div class="border">
     <ly-scroll scroll-y height="160px">
       <ul class="scrollbar-content">
@@ -368,6 +368,39 @@ const innerData = [
   '✌🏻 ✌🏻 ✌🏻 ✌🏻 ✌🏻 ✌🏻 ',
   '-----Inner End-----'
 ]
+
+const width = ref(0)
+const height = ref(0)
+const testRef = ref<HTMLElement | null>(null)
+const useTestMounted1 = () => {
+  watch(
+    () => unref(testRef),
+    el => {
+      console.log('out watch', el?.offsetWidth, el?.offsetHeight)
+      width.value = el!.offsetWidth
+      height.value = el!.offsetHeight
+    },
+    {
+      flush: 'pre'
+    }
+  )
+  onMounted(() => {
+    const el = testRef.value
+    width.value = el!.offsetWidth
+    height.value = el!.offsetHeight
+    console.log('mounted 1')
+  })
+}
+const useTestMounted2 = () => {
+  onMounted(() => {
+    console.log('mounted 2')
+  })
+}
+useTestMounted2()
+useTestMounted1()
+onMounted(() => {
+  console.log('mountd base', width.value, height.value)
+})
 </script>
 
 <style lang="scss" scoped>
