@@ -25,6 +25,8 @@
       <div style="width: 100%;background: #3a8ee6">bottom</div>
     </ly-v-fixed-container>
   </div>
+  <div> {{ $store }} </div>
+  <div> {{ $test }} </div>
 </template>
 
 <script lang="ts">

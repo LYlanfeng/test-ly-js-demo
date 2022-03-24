@@ -1,36 +1,11 @@
 import { isRef, unref } from 'vue'
 import { useSWR, usePagination } from '@ly-js/element'
-import { capitalize } from '@ly-js/utils'
 import type { Ref, UnwrapNestedRefs } from 'vue'
 import type { SWRConfig } from '@ly-js/element'
-import type { PageResponse } from '@/apis/types'
-import BaseService from './BaseService'
+import type { PageContext, IBaseService } from './types'
 
 export const useService = <G = any, A = G, D = G, U = G, F = G, DF = G>(
-  service: BaseService<G, A, D, U, F, DF>
-  // export const useService = <
-  //   R extends BaseService,
-  //   G = R extends BaseService<infer GG> ? GG : never,
-  //   A = R extends BaseService<infer GG, infer AA> ? AA : never,
-  //   D = R extends BaseService<infer GG, infer AA, infer DD> ? DD : never,
-  //   U = R extends BaseService<infer GG, infer AA, infer DD, infer UU>
-  //     ? UU
-  //     : never,
-  //   F = R extends BaseService<infer GG, infer AA, infer DD, infer UU, infer FF>
-  //     ? FF
-  //     : never,
-  //   DF = R extends BaseService<
-  //     infer GG,
-  //     infer AA,
-  //     infer DD,
-  //     infer UU,
-  //     infer FF,
-  //     infer DFF
-  //   >
-  //     ? DFF
-  //     : never
-  // >(
-  //   service: R
+  service: IBaseService<G, A, D, U, F, DF>
 ) => {
   const useList = <T extends Record<string, any>>(
     options: SWRConfig<Array<F>>,
@@ -52,7 +27,7 @@ export const useService = <G = any, A = G, D = G, U = G, F = G, DF = G>(
     }
   }
   const usePaging = <T>(
-    options: SWRConfig<PageResponse<F>> = {},
+    options: SWRConfig<PageContext<F>> = {},
     query?: UnwrapNestedRefs<T> | Ref<T>
   ) => {
     const { pagination, render: renderPage, addListening } = usePagination()

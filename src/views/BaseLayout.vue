@@ -29,17 +29,6 @@
 <script lang="ts" setup>
 // import LyELayout from '../components/layout/src/index.vue'
 // import '@ly-js/element/es/components/layout/style/index'
-// import '../components/layout/style.scss'
-// import 'element-plus/es/components/menu/style/index'
-// import 'element-plus/es/components/tabs/style/index'
-// import 'element-plus/es/components/tab-pane/style/index'
-// import 'element-plus/es/components/breadcrumb/style/index'
-// import 'element-plus/es/components/breadcrumb-item/style/index'
-// import 'element-plus/es/components/dropdown/style/index'
-// import 'element-plus/es/components/dropdown-item/style/index'
-// import 'element-plus/es/components/dropdown-menu/style/index'
-// import 'element-plus/es/components/space/style/index'
-// import 'element-plus/es/components/icon/style/index'
 import { menus } from '../components/data'
 
 defineOptions({
@@ -47,7 +36,7 @@ defineOptions({
 })
 
 const layoutOptions = reactive({
-  mode: '3',
+  mode: '1',
   tabs: true,
   breadcrumb: true,
   fixedAside: true,

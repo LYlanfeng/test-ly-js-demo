@@ -1,26 +1,28 @@
 import Qs, { IStringifyOptions } from 'qs'
-import { AxiosInstance } from 'axios'
+import { AxiosRequestConfig } from 'axios'
 import type {
-  ResponseData,
+  HttpResponse,
   Page,
-  PageResponse,
+  PageContext,
   PageQueryParams,
   UploadRes,
-  UploadProgressEvent
+  UploadProgressEvent,
+  IBaseService,
+  HttpInstance
 } from './types'
 
-export declare type HttpInstance = AxiosInstance
-
 export type {
-  ResponseData,
+  HttpResponse,
   Page,
-  PageResponse,
+  PageContext,
   PageQueryParams,
   UploadRes,
   UploadProgressEvent
 }
 
-class BaseService<G = any, A = G, D = G, U = G, F = G, DF = G> {
+class BaseService<G = any, A = G, D = G, U = G, F = G, DF = G>
+  implements IBaseService<AxiosRequestConfig, G, A, D, U, F, DF>
+{
   /**
    * restful module 名称配置
    * @type {string}
@@ -31,9 +33,9 @@ class BaseService<G = any, A = G, D = G, U = G, F = G, DF = G> {
    */
   pk = ''
 
-  _http: AxiosInstance | undefined | null
+  _http
 
-  static staticHttp: AxiosInstance | undefined
+  static staticHttp: HttpInstance | undefined
 
   serializerConfig: IStringifyOptions = {
     arrayFormat: 'indices',
@@ -44,12 +46,12 @@ class BaseService<G = any, A = G, D = G, U = G, F = G, DF = G> {
    * @param module 模块名称
    * @param myHttp 请求实例, 多实例请求使用
    */
-  constructor(module: string, myHttp: AxiosInstance | undefined | null) {
+  constructor(module: string, myHttp: HttpInstance | undefined | null) {
     this.module = module
     this._http = myHttp
   }
 
-  static setHttp(http: AxiosInstance) {
+  static setHttp(http: HttpInstance) {
     BaseService.staticHttp = http
   }
   get http() {
@@ -79,7 +81,7 @@ class BaseService<G = any, A = G, D = G, U = G, F = G, DF = G> {
    */
   query<T = any>(url: string, params?: any, config?: IStringifyOptions) {
     const { http } = this
-    return http.get<ResponseData<T>>(url, {
+    return http.get<HttpResponse<T>>(url, {
       params,
       paramsSerializer: (params: any) => this.serializer(params, config)
     })
@@ -92,7 +94,7 @@ class BaseService<G = any, A = G, D = G, U = G, F = G, DF = G> {
    */
   list<T = F>(params: Record<string, any> = {}) {
     const { http, module } = this
-    return http.post<ResponseData<Array<T>>>(`/${module}/list`, params)
+    return http.post<HttpResponse<Array<T>>>(`/${module}/list`, params)
   }
 
   /**
@@ -102,7 +104,7 @@ class BaseService<G = any, A = G, D = G, U = G, F = G, DF = G> {
    */
   paging<T = F>(params: PageQueryParams) {
     const { http, module } = this
-    return http.post<ResponseData<PageResponse<T>>>(`/${module}/pager`, params)
+    return http.post<HttpResponse<PageContext<T>>>(`/${module}/pager`, params)
   }
 
   /**
@@ -112,7 +114,7 @@ class BaseService<G = any, A = G, D = G, U = G, F = G, DF = G> {
    */
   get<T = DF>(params: Record<string, any>) {
     const { http, module } = this
-    return http.post<ResponseData<T>>(`/${module}/info`, params)
+    return http.post<HttpResponse<T>>(`/${module}/info`, params)
   }
 
   /**
@@ -122,7 +124,7 @@ class BaseService<G = any, A = G, D = G, U = G, F = G, DF = G> {
    */
   post<T extends A>(data: Partial<T>) {
     const { http, module } = this
-    return http.post<ResponseData<T>>(`/${module}/insert`, data)
+    return http.post<HttpResponse<T>>(`/${module}/insert`, data)
   }
 
   /**
@@ -133,7 +135,7 @@ class BaseService<G = any, A = G, D = G, U = G, F = G, DF = G> {
    */
   put<T extends U>(params: Partial<T>) {
     const { http, module } = this
-    return http.post<ResponseData<T>>(`/${module}/update`, params)
+    return http.post<HttpResponse<T>>(`/${module}/update`, params)
   }
 
   /**
@@ -143,7 +145,7 @@ class BaseService<G = any, A = G, D = G, U = G, F = G, DF = G> {
    */
   delete<T = D>(params: Record<string, any>) {
     const { http, module } = this
-    return http.post<ResponseData<T>>(`/${module}/delete`, params)
+    return http.post<HttpResponse<T>>(`/${module}/delete`, params)
   }
 
   /**
@@ -160,8 +162,8 @@ class BaseService<G = any, A = G, D = G, U = G, F = G, DF = G> {
     }
     r = this.post<A>(params as T)
     return r as T extends U
-      ? Promise<ResponseData<U>>
-      : Promise<ResponseData<A>>
+      ? Promise<HttpResponse<U>>
+      : Promise<HttpResponse<A>>
   }
 
   upload(
@@ -178,7 +180,7 @@ class BaseService<G = any, A = G, D = G, U = G, F = G, DF = G> {
       })
     }
     const { http } = this
-    return http.post<ResponseData<UploadRes>>(`${url}`, formData, {
+    return http.post<HttpResponse<UploadRes>>(`${url}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       },
@@ -193,5 +195,4 @@ class BaseService<G = any, A = G, D = G, U = G, F = G, DF = G> {
     })
   }
 }
-
 export default BaseService
