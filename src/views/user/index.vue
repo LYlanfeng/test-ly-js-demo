@@ -1,6 +1,6 @@
 <template>
   <ly-e-page full>
-    <ly-e-table-layout :render-pagination="renderPagination">
+    <ly-e-table-layout>
 
     </ly-e-table-layout>
   </ly-e-page>

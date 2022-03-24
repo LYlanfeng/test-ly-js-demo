@@ -35,8 +35,8 @@ defineOptions({
   name: 'Test1'
 })
 
-const c = provideGlobalConfig({})
-console.log('terst1 context', c.value)
+// const c = provideGlobalConfig({})
+// console.log('terst1 context', c.value)
 </script>
 
 <style lang="scss" scoped>

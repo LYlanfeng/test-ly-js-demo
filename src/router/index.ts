@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Layout from '../views/BaseLayout.vue'
-import type { LyRouteRecordRaw } from '../components/layout'
+import type { LyRouteRecordRaw } from '@ly-js/element'
 
 const routes: Array<LyRouteRecordRaw> = [
   {
@@ -63,7 +63,7 @@ const routes: Array<LyRouteRecordRaw> = [
           title: 'test-child-1',
           keepAlive: false,
           activeMenu: 'Test1',
-          hidden: true,
+          hidden: true
         }
       },
       {

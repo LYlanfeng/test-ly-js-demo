@@ -3,7 +3,7 @@ import axios from 'axios'
 import { isString, isObject, throttle } from 'lodash'
 import { ElMessage as Message } from 'element-plus'
 // import { getToken } from '@ly/share'
-import type { ResponseData } from './apis/types'
+import type { HttpResponse } from './apis/types'
 import type {
   AxiosInstance,
   AxiosRequestConfig,
@@ -57,7 +57,7 @@ http.interceptors.response.use(
     }
     return res
   },
-  (error: AxiosError<ResponseData>) => {
+  (error: AxiosError<HttpResponse>) => {
     if (error.response && error.response.data) {
       const data = error.response?.data || {}
       if (isString(data)) {

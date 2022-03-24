@@ -19,9 +19,9 @@
       :size-change="onSizeChange"
       @logout="onLogout"
     >
-<!--      <template #user="{userInfo}">-->
-<!--        user: {{userInfo}}-->
-<!--      </template>-->
+      <!--      <template #user="{userInfo}">-->
+      <!--        user: {{userInfo}}-->
+      <!--      </template>-->
     </ly-e-layout>
   </el-config-provider>
 </template>
@@ -29,6 +29,7 @@
 <script lang="ts" setup>
 // import LyELayout from '../components/layout/src/index.vue'
 // import '@ly-js/element/es/components/layout/style/index'
+import { ComponentSize } from 'element-plus/es/constants'
 import { menus } from '../components/data'
 
 defineOptions({
@@ -56,8 +57,8 @@ const handleRefresh = async () => {
   await timeout()
 }
 
-let size = $ref('default')
-const onSizeChange = (s: string) => {
+let size = $ref<ComponentSize>('default')
+const onSizeChange = (s: ComponentSize) => {
   console.log('size', s)
   size = s
 }
